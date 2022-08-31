@@ -1,0 +1,16 @@
+{
+  "name": "custom-importmap",
+  "version": "0.0.1",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm-serve -p 8080 -C -L debug ."
+  },
+  "keywords": [
+    "Microfrontends"
+  ],
+  "author": "Matthias Hryniszak <padcom@gmail.com>",
+  "license": "CC-BY-NC-SA-4.0",
+  "dependencies": {
+    "@padcom/npm-serve": "^2.5.4"
+  }
+}

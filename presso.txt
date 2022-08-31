@@ -1,0 +1,141 @@
+> lightbulb.png
+
+Jane had this crazy idea one day, to provide online services for a new cool thing.
+
+> jane-talks-to-william.png
+
+She went to her buddy, William and sketched an overview of how the system would work.
+He decided he wants to work with her on that cool new thing and so they get to work.
+
+> coding-hard.png
+
+After days of hacking here and there, following the explorative programming princile
+to the letter, no tests, no error handling nothing - just the bare minimum to see
+if the idea will make sense at all. As explorative programming dictates, they will
+have a freeze period after the release to clean stuff up...
+
+> issues.png
+
+After a few weeks of coding they were finally ready to release, which they did,
+but the cleanup phase never came due to the ever growing flow of production issues,
+bugs, requests for new features etc.
+
+> hiring-hard.png
+
+So they decide to hire some guys to keep up with this, apparently, growing mess.
+Money's not the issue - they just need hands and minds that can do things quickly,
+without hesitation.
+
+> samurai-fighting.png
+
+Essentially, they're looking for samurais.
+
+> corporation-2.png
+
+Eventually after some time the company has gotten so big that there are entire
+departaments now, sitting on different floors, developers don't even go to
+the office anymore after the you-know-what.
+
+> corporation-3.png
+
+People don't even talk to eachother.
+But there is one thing they still have in common and that is this massive pile of
+horse manure that has never been cleaned up but needs constant upgrades because
+the business says so.
+
+> welcome-to-hel.png
+
+Welcome to Hell, mf!
+
+> bright-idea.png
+
+Luckily, the new CTO recognizes the situation and informs the dev team that there
+might yet be a solution, salvation (in a manner of speaking) from the depths of
+hell: Microfrontends!
+
+> microfrontends.png
+
+Obviously, CTO being the CTO has absolutely no idea what in
+the name of whatever god you believe in. But he thinks it'd be something cool to
+add that to his new presentation at a conference.
+
+And what would that bring?
+
+First of all, the possibility to decouple teams to deploy separately. That's just
+a must. The number of merge conflitcs has gotten so high it's next to impossible
+to release anything. The pipeline with tests runs FOREVER so there are maybe 2
+releases per day and you do know what they contain, right? BUG-F'n-FIXES.
+That means that if a particular part of the system can be deployed separately it
+can also be tested separately.
+
+> microfrontends-in-action.png
+
+Looking at the resources on the Internet you might have arrived at a website that
+advocates the use thereof. Well, they suggest using webcomponents and I strongly
+advice you take that advice and shove it where the sun does not shine. Seriously.
+Webcomponents are so dead that besides every human being using chrome (whch is like
+massive percentage of the population) nobody uses them. Certainly not as-is.
+But the biggest disadvantage of webcomponents is that there is no way to load them
+on-demand. So what's a girl to do, right? Let's get back to basics!
+
+> searching-capabilities.png
+
+Emma looked at the current capabilities of the web browsers and it looks like
+ECMAScript modules are finally a thing. That gives us automatically the option to
+load modules from files and have them loaded on-demand using the `import(url)`
+asynchronous function that, on-demand, will import a remote module, wherever it
+might be located. Remote code on-demand!!!
+
+> happy-emma.png
+
+So that's all good, we can import code on demand but then we'd have to refer to
+the remote modules by full URLs and that'd be sort of... Effin' inconvinient.
+
+> bill-with-importmap.png
+
+Bill looks up the support for `importmap` and this gives them a clean and easy
+way to deploy exactly the part of code they need.
+Since they also have chosen to use the public npm registry with unpkg.com for
+publising and deployment to the browser, when they `npm publish` a microfrontend
+the next version is available almost immediately all over the globe.
+
+> jane-and-william-talking.png
+
+After a while Jane and William were talking about the need to do a preview for
+a customer they really hoped they would get to do bussiness with. Jane looks up
+this package @padcom/npm-serve and ponders a bit while reading the documentation.
+The idea is simple: you write a little bit of javascript code that will take
+sort of a prescription of what the version of that microfrontend is and they
+will read that requested version from a query string parameter. Genious!
+
+> alarm.png
+
+After a while they have noticed that something's wrong with unpkg.com. Every
+single time version information is being updated it friggen HANGS! Sometimes
+it hangs like FOREVER! Having said that the public npm repository also was
+never the most stable platform.
+
+> coding-time.png
+
+To get away from unpkg.com they have opted to use the Amazon Cloudfront or
+Akamai or Fastly IO - one of them will suffice. To serve the package content
+yet again @padcom/npm-serve comes to play. It serves content from packages
+from npm registry - exactly like unpkg.com does - only has a much better caching
+mechanism and a totally supperior version detection system.
+
+To mitigate the npm registry problem they they have opted for a caching proxy.
+As a result, developers have switched to that local mirror, because it's just so
+damn faster!
+
+Again, a few weeks later, one of the developers spotted that fantastic new
+frontend framework that would be just the most perfect fit ever. Well. thanks
+to bundling he can ship his own version of the library, wrapping it into whatever
+framework the host application and/or other microfrontends require it. Done.
+
+And this is how dynamic loading of modules combined with npm registries and a little bit
+of magic to serve files and a whole lot of fun implementing it have untangled intermingled
+teams into self-sufficient and self contained structures that provide value on their own.
+
+> disclaimer.png
+
+All events are purely fictional and any similarities to any part of the story is strictly accidental, sorta...
